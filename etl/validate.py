@@ -3,7 +3,7 @@ from config import EXPECTED
 
 def validate(connection, logger):
     logger.info("VALIDATE PHASE STARTING: running checks...")
-    is_passed = True;
+    is_passed = True
 
     def check(label, actual, expected):
         nonlocal is_passed
