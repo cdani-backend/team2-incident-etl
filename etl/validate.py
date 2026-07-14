@@ -58,8 +58,8 @@ def validate(connection, logger):
     check("negative_delay_or_null_target", bad_rows, 0)
 
     if is_passed:
-        logger.info("VALIDATE: all checks passed")
+        logger.info("VALIDATION FINISHED: all checks passed")
     else:
-        logger.warning("VALIDATE: one or more checks FAILED — review above")
+        logger.warning("VALIDATION FINISHED: one or more checks FAILED — review above")
 
     return is_passed
