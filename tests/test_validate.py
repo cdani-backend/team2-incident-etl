@@ -67,7 +67,6 @@ def test_validate_fails_on_mismatch(monkeypatch):
     }
     monkeypatch.setattr("etl.validate.EXPECTED", expected)
 
-    # open_incidents is wrong (60 instead of 63)
     conn = _make_mock_connection(
         total=180, uniq=180, met=38, breached=142,
         open_count=60, critical_count=12, bad_rows=0,
