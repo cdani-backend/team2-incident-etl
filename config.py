@@ -5,6 +5,7 @@ import logging
 from pathlib import Path
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
+from sqlachemy.engine import URL
 
 PROJECT_ROOT = Path(__file__).parent
 LOG_DIR = PROJECT_ROOT / 'logs'
@@ -37,9 +38,17 @@ def load_env():
 
 def get_engine():
     credentials = load_env()
-    connection_string = (
-        f"postgresql+psycopg2://{credentials['DB_USER']}:{credentials['DB_PASS']}"
-        f"@{credentials['DB_HOST']}:{credentials['DB_PORT']}/{credentials['DB_NAME']}"
+    # connection_string = (
+    #     f"postgresql+psycopg2://{credentials['DB_USER']}:{credentials['DB_PASS']}"
+    #     f"@{credentials['DB_HOST']}:{credentials['DB_PORT']}/{credentials['DB_NAME']}"
+    # )
+    connection_url = URL.create(
+        drivername="postgresql+psycopg2",
+        username=credentials['DB_USER'],
+        password=credentials['DB_PASS'],
+        host=credentials['DB_HOST'],
+        port=int(credentials['DB_PORT']),
+        database=credentials['DB_NAME']
     )
     return create_engine(connection_string)
 
