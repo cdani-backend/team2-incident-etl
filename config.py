@@ -41,7 +41,7 @@ def get_engine():
         f"postgresql+psycopg2://{credentials['DB_USER']}:{credentials['DB_PASS']}"
         f"@{credentials['DB_HOST']}:{credentials['DB_PORT']}/{credentials['DB_NAME']}"
     )
-    return create_engine(connection_string);
+    return create_engine(connection_string)
 
 def get_logger():
     logger = logging.getLogger('incident_response_mart_etl')
